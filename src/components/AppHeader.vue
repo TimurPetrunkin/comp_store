@@ -23,7 +23,8 @@ const intervalWeather = ref();
 const emit = defineEmits(['changeDrawer']);
 
 const timeStr = computed(() =>
-	new Date(currentTime.value).toLocaleTimeString([], {
+	new Date(currentTime.value).toLocaleTimeString('ru-RU', {
+		timeZone: 'Europe/Moscow',
 		hour: '2-digit',
 		minute: '2-digit',
 	})
