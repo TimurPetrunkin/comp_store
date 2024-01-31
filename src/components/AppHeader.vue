@@ -34,7 +34,7 @@ const fetchWeather = async () => {
 		const { data } = await axios.get<TypeGetWeatherResponse>(
 			'https://api.openweathermap.org/data/2.5/weather?lat=55.75396&lon=37.620393&appid=efb9a63f62db098c11f93f65554bf49d&units=metric&lang=ru'
 		);
-		temperature.value = Math.floor(data.main.temp);
+		temperature.value = Math.trunc(data.main.temp);
 	} catch (err) {
 		console.log(err);
 	}
@@ -52,6 +52,7 @@ onMounted(() => {
 
 onUnmounted(() => {
 	clearInterval(intervalTime.value);
+	clearInterval(intervalWeather.value);
 });
 </script>
 
