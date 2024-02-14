@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useCartStore } from '../stores/CartStore';
+import { BASE_URL, WEATHER_API } from '../constants';
 const cartStore = useCartStore();
 type TypeGetWeatherResponse = {
 	main: {
@@ -33,7 +34,7 @@ const timeStr = computed(() =>
 const fetchWeather = async () => {
 	try {
 		const { data } = await axios.get<TypeGetWeatherResponse>(
-			'https://api.openweathermap.org/data/2.5/weather?lat=55.75396&lon=37.620393&appid=efb9a63f62db098c11f93f65554bf49d&units=metric&lang=ru'
+			`${BASE_URL}?q=Moscow&appid=${WEATHER_API}&units=metric`
 		);
 		temperature.value = Math.trunc(data.main.temp);
 	} catch (err) {
