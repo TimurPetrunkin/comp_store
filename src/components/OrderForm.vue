@@ -50,6 +50,12 @@ const changeOrderStatus = (): void => {
 	<div
 		class="bg-white w-96 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 p-10 rounded-xl shadow-xl"
 	>
+		<img
+			class="opacity-60 cursor-pointer hover:opacity-100 transition absolute top-3 right-3"
+			src="/close.svg"
+			alt=""
+			@click="emit('changeOrder')"
+		/>
 		<form v-if="!oderCreated" @submit.prevent="changeOrderStatus">
 			<h1 class="text-center font-bold">Заполните данные для доставки</h1>
 			<div class="flex flex-col gap-2 mt-2">
